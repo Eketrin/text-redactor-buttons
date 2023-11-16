@@ -30,8 +30,8 @@ namespace text_redactor_buttons
         static void Main(string[] args)
         {
             PowerfulBotton powBott = new PowerfulBotton();
-            SaveMe saveMe = new SaveMe();
-            powBott.SetCommand(new ButtonOnCommand(saveMe));
+            File file = new File();
+            powBott.SetCommand(new ButtonOnCommand(file));
             powBott.PressButton();
             powBott.PressUndo();
 
@@ -46,7 +46,7 @@ namespace text_redactor_buttons
     }
 
     // Receiver - Получатель
-    class SaveMe
+    class File
     {
         public void Save()
         {
@@ -73,24 +73,24 @@ namespace text_redactor_buttons
     }
     class ButtonOnCommand : ICommand
     {
-        SaveMe file;
-        CutMe file1;
-        public ButtonOnCommand(SaveMe file)
+        File fi;
+        CutMe fi1;
+        public ButtonOnCommand(File file)
         {
-            this.file = file;
+            this.fi = file;
         }
         public ButtonOnCommand(CutMe file)
         {
-            this.file1 = file;
+            this.fi1 = file;
         }
 
         public void Execute()
         {
-            file.Save();
+            fi.Save();
         }
         public void Undo()
         {
-            file.NoSave();
+            fi.NoSave();
         }
     }
 
